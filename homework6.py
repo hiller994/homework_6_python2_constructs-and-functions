@@ -1,5 +1,7 @@
 from datetime import time
 
+from selene.core.query import title
+
 
 def test_dark_theme_by_time(): #Задание на условие
     """
@@ -51,27 +53,30 @@ def test_find_suitable_user(): #на использование циклов
         {"name": "Maria", "age": 18},
     ]
 
+    # TODO найдите пользователя с именем "Olga"
+    suitable_users = None
     for user in users:
         if user["name"] == "Olga":
             suitable_users = user
             break
-
-    # TODO найдите пользователя с именем "Olga"
-    #suitable_users = None
     assert suitable_users == {"name": "Olga", "age": 45}
-    '''
+
     # TODO найдите всех пользователей младше 20 лет
-    suitable_users = None
+    #suitable_users = None
+
+    suitable_users = []
+    for young_users in users:
+        if young_users["age"] < 20:
+            suitable_users.append(young_users)
     assert suitable_users == [
         {"name": "Stanislav", "age": 15},
         {"name": "Maria", "age": 18},
     ]
-'''
 
 
-'''
 # Сделайте функцию, которая будет печатать
 # читаемое имя переданной ей функции и значений аргументов.
+
 # Вызовите ее внутри функций, описанных ниже
 # Подсказка: Имя функции можно получить с помощью func.__name__
 # Например, вызов следующей функции должен преобразовать имя функции
@@ -86,18 +91,20 @@ def test_readable_function():
     go_to_companyname_homepage(page_url="https://companyname.com")
     find_registration_button_on_login_page(page_url="https://companyname.com/login", button_text="Register")
 
+def print_func(br_func, *args):
+    br_name = br_func.__name__.replace('_', ' ').title()
+    br_args = ", ".join(args)
+    print(f"{br_name} [{br_args}]")
+    return f"{br_name} [{br_args}]"
 
 def open_browser(browser_name):
-    actual_result = None
+    actual_result = print_func(open_browser, browser_name)
     assert actual_result == "Open Browser [Chrome]"
 
-
 def go_to_companyname_homepage(page_url):
-    actual_result = None
+    actual_result = print_func(go_to_companyname_homepage, page_url)
     assert actual_result == "Go To Companyname Homepage [https://companyname.com]"
 
-
 def find_registration_button_on_login_page(page_url, button_text):
-    actual_result = None
+    actual_result = print_func(find_registration_button_on_login_page, page_url, button_text)
     assert actual_result == "Find Registration Button On Login Page [https://companyname.com/login, Register]"
-'''
