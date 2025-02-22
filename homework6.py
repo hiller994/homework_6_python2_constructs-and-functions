@@ -1,13 +1,10 @@
 from datetime import time
 
-from selene.core.query import title
-
-
 def test_dark_theme_by_time(): #Задание на условие
     """
     Протестируйте правильность переключения темной темы на сайте в зависимости от времени
     """
-    current_time = time(hour=23) #текущее время
+    current_time = time(hour=6) #текущее время
     # TODO переключите темную тему в зависимости от времени суток (с 22 до 6 часов утра - ночь)
     if 22 <= current_time.hour or current_time.hour <= 6:
         is_dark_theme = True
