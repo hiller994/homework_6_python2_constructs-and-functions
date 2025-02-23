@@ -27,7 +27,7 @@ def test_dark_theme_by_time_and_user_choice(): #Задание на услови
 
     if dark_theme_enabled_by_user == True:  #если темная тема включена юзером
         is_dark_theme = True #то тема включена
-    elif dark_theme_enabled_by_user == None and 22 <= current_time.hour or current_time.hour < 6: #если юзер не включил тему и время "ночь"
+    elif dark_theme_enabled_by_user == None and (22 <= current_time.hour or current_time.hour < 6): #если юзер не включил тему и время "ночь"
         is_dark_theme = True
     else:
         is_dark_theme = False
